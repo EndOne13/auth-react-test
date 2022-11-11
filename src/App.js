@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {Route, Routes} from "react-router-dom";
+import MainLayouts from "./layouts/MainLayouts";
+
+import './scss/app.scss'
+import HeaderTest from "./components/HeaderTest";
+import Plus from "./pages/Plus";
+import Minus from "./pages/Minus";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [state, setState] = React.useState(0)
+
+    const plusHandler = (initialState) => {
+        setState((state + initialState))
+    }
+
+    const minusHandler = (initialState) => {
+        setState((state - initialState))
+    }
+    return (<>
+            <HeaderTest/>
+            <Routes>
+                <Route path='/' element={<MainLayouts
+                    state={state}
+                />}>
+                    <Route path='plus' element={<Plus
+                        onPlus={plusHandler}
+                    />}/>
+                    <Route path='minus' element={<Minus
+                        onMinus={minusHandler}
+                    />}/>
+                </Route>
+            </Routes>
+        </>
+
+    );
 }
 
 export default App;
