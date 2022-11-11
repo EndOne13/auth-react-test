@@ -9,31 +9,16 @@ import Minus from "./pages/Minus";
 
 function App() {
 
-    const [state, setState] = React.useState(0)
 
-    const plusHandler = (initialState) => {
-        setState((state + initialState))
-    }
-
-    const minusHandler = (initialState) => {
-        setState((state - initialState))
-    }
     return (<>
             <HeaderTest/>
             <Routes>
-                <Route path='/' element={<MainLayouts
-                    state={state}
-                />}>
-                    <Route path='plus' element={<Plus
-                        onPlus={plusHandler}
-                    />}/>
-                    <Route path='minus' element={<Minus
-                        onMinus={minusHandler}
-                    />}/>
+                <Route path='/' element={<MainLayouts/>}>
+                    <Route path='plus' element={<Plus/>}/>
+                    <Route path='minus' element={<Minus/>}/>
                 </Route>
             </Routes>
         </>
-
     );
 }
 

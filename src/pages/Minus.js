@@ -1,12 +1,13 @@
 import React from 'react';
+import {useDispatch} from "react-redux";
+import {decrement} from "../redux/test/slice";
 
-function Minus({onMinus}) {
+function Minus() {
+    const dispatch = useDispatch()
 
     return (
         <div>
-            <button onClick={() => onMinus(1)}>-</button>
-            <button onClick={() => onMinus(5)}>-5</button>
-            <button onClick={() => onMinus(10)}>-10</button>
+            <button onClick={() => dispatch(decrement())}>-</button>
         </div>
     );
 }

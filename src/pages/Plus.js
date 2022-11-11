@@ -1,12 +1,13 @@
 import React from 'react';
+import {useDispatch} from "react-redux";
+import {increment} from "../redux/test/slice";
 
-function Plus({onPlus}) {
+function Plus() {
+    const dispatch = useDispatch()
 
     return (
         <div>
-            <button onClick={() => onPlus(1)}>+</button>
-            <button onClick={() => onPlus(5)}>+5</button>
-            <button onClick={() => onPlus(10)}>+10</button>
+            <button onClick={() => dispatch(increment())}>+</button>
         </div>
     );
 }
